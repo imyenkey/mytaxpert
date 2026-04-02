@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:www.mytaxpert.org)",
+      "Bash(npx --version)",
+      "mcp__Claude_Preview__preview_start",
+      "WebSearch"
+    ]
+  }
+}

@@ -1,0 +1,513 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog — MyTaxPert</title>
+    <meta
+      name="description"
+      content="Latest tax tips, accounting insights, and financial advice from MyTaxPert's expert team."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      .blog-hero {
+        background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
+        color: white;
+        padding: 80px 20px;
+        text-align: center;
+        margin-bottom: 60px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .blog-hero::before {
+        content: '';
+        position: absolute;
+        top: -40px;
+        right: -40px;
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        background: rgba(240, 180, 41, 0.08);
+      }
+
+      .blog-hero h1 {
+        font-size: 3rem;
+        margin-bottom: 20px;
+        font-family: "Playfair Display", serif;
+        font-weight: 700;
+        color: white;
+        position: relative;
+        z-index: 1;
+      }
+
+      .blog-hero p {
+        font-size: 1.2rem;
+        max-width: 600px;
+        margin: 0 auto;
+        opacity: 0.95;
+        color: rgba(255, 255, 255, 0.95);
+        position: relative;
+        z-index: 1;
+      }
+
+      .blog-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .blog-controls {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 40px;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+
+      .search-bar {
+        flex: 1;
+        min-width: 250px;
+        position: relative;
+      }
+
+      .search-bar input {
+        width: 100%;
+        padding: 12px 16px;
+        border: 1.5px solid rgba(240, 180, 41, 0.3);
+        border-radius: 10px;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        background: linear-gradient(135deg, rgba(11, 31, 58, 0.05) 0%, rgba(26, 60, 110, 0.05) 100%);
+        color: var(--navy);
+      }
+
+      .search-bar input::placeholder {
+        color: var(--muted);
+      }
+
+      .search-bar input:focus {
+        outline: none;
+        border-color: var(--gold);
+        box-shadow: 0 0 0 3px rgba(201, 151, 42, 0.15);
+        background: white;
+      }
+
+      .admin-btn {
+        padding: 12px 24px;
+        background: linear-gradient(135deg, var(--gold), var(--amber));
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 1rem;
+        font-weight: 600;
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
+        text-decoration: none;
+        display: inline-block;
+      }
+
+      .admin-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(201, 151, 42, 0.35);
+      }
+
+      .blog-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 30px;
+        margin-bottom: 60px;
+      }
+
+      .blog-card {
+        background: linear-gradient(135deg, rgba(11, 31, 58, 0.95) 0%, rgba(26, 60, 110, 0.95) 100%);
+        border: 1px solid rgba(240, 180, 41, 0.2);
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 8px 32px rgba(11, 31, 58, 0.3);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        display: flex;
+        flex-direction: column;
+        backdrop-filter: blur(10px);
+      }
+
+      .blog-card:hover {
+        transform: translateY(-12px);
+        box-shadow: 0 16px 48px rgba(11, 31, 58, 0.4);
+        border-color: rgba(240, 180, 41, 0.4);
+      }
+
+      .blog-card-image {
+        width: 100%;
+        height: 200px;
+        background: linear-gradient(135deg, var(--navy) 0%, #0E2A50 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3rem;
+        color: rgba(240, 180, 41, 0.4);
+      }
+
+      .blog-card-content {
+        padding: 32px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .blog-meta {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 12px;
+        font-size: 0.85rem;
+        color: rgba(255, 255, 255, 0.6);
+      }
+
+      .blog-category {
+        display: inline-block;
+        padding: 6px 14px;
+        background: rgba(240, 180, 41, 0.15);
+        border: 1px solid rgba(240, 180, 41, 0.3);
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: var(--amber);
+      }
+
+      .blog-card h3 {
+        font-size: 1.4rem;
+        margin: 16px 0;
+        color: white;
+        font-family: "Playfair Display", serif;
+        line-height: 1.3;
+      }
+
+      .blog-card p {
+        color: rgba(255, 255, 255, 0.75);
+        line-height: 1.6;
+        margin-bottom: 15px;
+        flex: 1;
+      }
+
+      .blog-author {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding-top: 16px;
+        border-top: 1px solid rgba(240, 180, 41, 0.2);
+        margin-top: auto;
+      }
+
+      .author-avatar {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--gold), var(--amber));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--navy);
+        font-weight: 700;
+        font-size: 0.85rem;
+      }
+
+      .author-info small {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 0.85rem;
+      }
+
+      .read-more {
+        color: var(--amber);
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.2s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .read-more:hover {
+        color: var(--gold);
+        gap: 10px;
+      }
+
+      .blog-single {
+        max-width: 800px;
+        margin: 0 auto 60px;
+        background: linear-gradient(135deg, rgba(11, 31, 58, 0.98) 0%, rgba(26, 60, 110, 0.98) 100%);
+        border: 1px solid rgba(240, 180, 41, 0.2);
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 16px 48px rgba(11, 31, 58, 0.3);
+        backdrop-filter: blur(10px);
+      }
+
+      .blog-single-header {
+        background: linear-gradient(135deg, var(--navy) 0%, #0E2A50 100%);
+        color: white;
+        padding: 48px 40px;
+        text-align: center;
+        border-bottom: 1px solid rgba(240, 180, 41, 0.15);
+      }
+
+      .blog-single-header h1 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        font-family: "Playfair Display", serif;
+        color: white;
+      }
+
+      .blog-single-meta {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        flex-wrap: wrap;
+        font-size: 0.95rem;
+        opacity: 0.95;
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      .blog-single-body {
+        padding: 48px 40px;
+        font-size: 1.05rem;
+        line-height: 1.8;
+        color: rgba(255, 255, 255, 0.85);
+      }
+
+      .blog-single-body h2 {
+        font-size: 1.8rem;
+        margin-top: 30px;
+        margin-bottom: 15px;
+        color: white;
+        font-family: "Playfair Display", serif;
+      }
+
+      .blog-single-body p {
+        margin-bottom: 20px;
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      .blog-single-body ul,
+      .blog-single-body ol {
+        margin-left: 30px;
+        margin-bottom: 20px;
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      .blog-single-body li {
+        margin-bottom: 10px;
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      .blog-actions {
+        display: flex;
+        gap: 10px;
+        margin-top: 20px;
+      }
+
+      .btn-small {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .btn-edit {
+        background: var(--gold);
+        color: white;
+      }
+
+      .btn-edit:hover {
+        background: var(--amber);
+      }
+
+      .btn-delete {
+        background: #ff6b6b;
+        color: white;
+      }
+
+      .btn-delete:hover {
+        background: #ee5a52;
+      }
+
+      .empty-state {
+        text-align: center;
+        padding: 60px 20px;
+      }
+
+      .empty-state h2 {
+        font-size: 2rem;
+        margin-bottom: 15px;
+        color: var(--navy);
+      }
+
+      .empty-state p {
+        color: var(--muted);
+        margin-bottom: 30px;
+      }
+
+      .back-link {
+        display: inline-block;
+        margin-bottom: 20px;
+        color: var(--gold);
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.2s ease;
+      }
+
+      .back-link:hover {
+        color: var(--amber);
+        text-decoration: none;
+      }
+
+      @media (max-width: 768px) {
+        .blog-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .blog-hero {
+          padding: 60px 20px;
+        }
+
+        .blog-hero h1 {
+          font-size: 2rem;
+          margin-bottom: 16px;
+        }
+
+        .blog-hero p {
+          font-size: 1rem;
+        }
+
+        .blog-controls {
+          flex-direction: column;
+        }
+
+        .search-bar {
+          min-width: 100%;
+        }
+
+        .blog-single-header h1 {
+          font-size: 1.8rem;
+        }
+
+        .blog-single-header {
+          padding: 32px 24px;
+        }
+
+        .blog-single-body {
+          padding: 32px 24px;
+        }
+
+        .blog-card-content {
+          padding: 24px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation (reuse from main site) -->
+    <header id="navbar">
+      <div class="container nav-inner">
+        <a href="index.html" class="logo">
+          <img src="mytaxpert.png" alt="MyTaxPert" class="logo-img" />
+        </a>
+        <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+          <a href="index.html">Home</a>
+          <a href="blog.html" class="active">Blog</a>
+          <a href="index.html#services">Services</a>
+          <a href="index.html#contact" class="btn btn-outline-nav">Contact</a>
+        </nav>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Blog Hero -->
+    <div class="blog-hero">
+      <div class="blog-container">
+        <h1>MyTaxPert Blog</h1>
+        <p>
+          Expert insights on taxes, accounting, compliance, and financial
+          growth. Stay updated with the latest from our team.
+        </p>
+      </div>
+    </div>
+
+    <!-- Blog Content -->
+    <div class="blog-container">
+      <div id="blogSingleView" style="display: none">
+        <!-- Single blog post will be displayed here -->
+      </div>
+
+      <div id="blogListView">
+        <div class="blog-controls">
+          <div class="search-bar">
+            <input
+              type="text"
+              id="searchInput"
+              placeholder="Search blog posts..."
+              aria-label="Search blog posts"
+            />
+          </div>
+          <a href="admin.html" class="admin-btn">Admin Panel</a>
+        </div>
+
+        <div id="blogGrid" class="blog-grid"></div>
+
+        <div id="emptyState" class="empty-state" style="display: none">
+          <h2>No Posts Yet</h2>
+          <p>
+            Check back soon for tax tips, accounting insights, and financial
+            advice.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container footer-inner">
+        <div class="footer-brand">
+          <a href="index.html" class="logo logo-light">
+            <img src="mytaxpert.png" alt="MyTaxPert" class="logo-img" />
+          </a>
+          <p>
+            Navigate your finances with confidence. Expert accounting and tax
+            services from Chennai's trusted CA firm.
+          </p>
+        </div>
+        <div class="footer-links">
+          <h5>Quick Links</h5>
+          <ul>
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="admin.html">Admin</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h5>Contact</h5>
+          <p><a href="tel:+918056040515">+91-8056040515</a></p>
+          <p><a href="mailto:letter@mytaxpert.org">letter@mytaxpert.org</a></p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 MyTaxPert. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="blog.js"></script>
+  </body>
+</html>
