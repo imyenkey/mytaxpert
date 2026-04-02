@@ -1,22 +1,8 @@
-# MyTaxPert - Cloudflare Pages Configuration
 name = "mytaxpert"
 compatibility_date = "2024-01-01"
 
-# Production environment
-[env.production]
-name = "mytaxpert-production"
-routes = [
-  { pattern = "www.mytaxpert.org/*", zone_id = "YOUR_ZONE_ID" }
-]
-
-[[env.production.kv_namespaces]]
+# KV namespace for blog functionality
+[[kv_namespaces]]
 binding = "BLOG_KV"
 id = "REPLACE_WITH_PROD_ID"
-
-# Preview environment
-[env.preview]
-name = "mytaxpert-preview"
-
-[[env.preview.kv_namespaces]]
-binding = "BLOG_KV"
-id = "REPLACE_WITH_PREVIEW_ID"
+preview_id = "REPLACE_WITH_PREVIEW_ID"
