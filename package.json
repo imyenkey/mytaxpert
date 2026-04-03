@@ -1,0 +1,13 @@
+{
+  "name": "mytaxpert",
+  "version": "1.0.0",
+  "description": "MyTaxPert - Professional accounting and tax services website",
+  "private": true,
+  "scripts": {
+    "build": "echo 'No build needed'",
+    "deploy": "echo 'Deploying to Cloudflare Pages'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
