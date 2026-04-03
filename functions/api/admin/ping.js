@@ -27,6 +27,12 @@ export default async function handler(request, env) {
   }
 
   if (request.method === 'GET') {
+    const provided = request.headers.get('X-Admin-Password');
+    const stored = env.ADMIN_PASSWORD;
+
+    // Debug logging
+    console.log('Auth check:', { provided, stored, match: provided === stored });
+
     if (!checkAuth(request, env)) {
       return jsonResponse({ error: 'Unauthorized' }, 401);
     }
