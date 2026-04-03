@@ -4,7 +4,16 @@
       "WebFetch(domain:www.mytaxpert.org)",
       "Bash(npx --version)",
       "mcp__Claude_Preview__preview_start",
-      "WebSearch"
+      "WebSearch",
+      "Bash(git remote:*)",
+      "Bash(git branch:*)",
+      "Bash(git push:*)",
+      "Bash(git add:*)",
+      "Bash(git commit -m 'Fix wrangler.toml for Cloudflare Pages deployment:*)",
+      "Bash(git commit -m 'Simplify wrangler.toml for Cloudflare Pages:*)",
+      "Bash(git commit -m 'Add pages_build_output_dir to wrangler.toml:*)",
+      "Bash(git commit --allow-empty -m 'Clear Cloudflare build cache:*)",
+      "Bash(git commit -m 'Remove wrangler.toml - let Cloudflare Pages handle deployment:*)"
     ]
   }
 }
