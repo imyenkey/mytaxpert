@@ -4,11 +4,11 @@ compatibility_date = "2024-01-01"
 [env.production]
 name = "mytaxpert-production"
 kv_namespaces = [
-  { binding = "BLOG_KV", id = "REPLACE_WITH_PROD_ID" }
+  { binding = "BLOG_KV", id = "282abb61e17b49c48eba122c80b2294b" }
 ]
 
 [env.preview]
 name = "mytaxpert-preview"
 kv_namespaces = [
-  { binding = "BLOG_KV", id = "REPLACE_WITH_PREVIEW_ID" }
+  { binding = "BLOG_KV", id = "282abb61e17b49c48eba122c80b2294b" }
 ]
