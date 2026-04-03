@@ -13,7 +13,17 @@
       "Bash(git commit -m 'Simplify wrangler.toml for Cloudflare Pages:*)",
       "Bash(git commit -m 'Add pages_build_output_dir to wrangler.toml:*)",
       "Bash(git commit --allow-empty -m 'Clear Cloudflare build cache:*)",
-      "Bash(git commit -m 'Remove wrangler.toml - let Cloudflare Pages handle deployment:*)"
+      "Bash(git commit -m 'Remove wrangler.toml - let Cloudflare Pages handle deployment:*)",
+      "Bash(git commit -m 'Add package.json for Cloudflare Pages build configuration:*)",
+      "WebFetch(domain:mytaxpert.imyenkey.workers.dev)",
+      "Bash(git commit -m 'Restore wrangler.toml for proper Pages deployment:*)",
+      "WebFetch(domain:mytaxpert-v2.pages.dev)",
+      "Bash(git commit -m 'Fix wrangler.toml environment configuration:*)",
+      "Bash(git commit -m 'Add BLOG_KV namespace ID to wrangler.toml:*)",
+      "Bash(git commit --allow-empty -m 'Trigger Cloudflare Pages redeployment with KV namespace:*)",
+      "Bash(git commit -m 'Add _routes.json to enable Cloudflare Pages Functions routing:*)",
+      "Bash(curl -X GET https://mytaxpert-v2.pages.dev/api/posts -H \"Content-Type: application/json\" -w \"\\\\nStatus: %{http_code}\\\\n\")",
+      "Bash(git commit -m 'Remove _routes.json - not needed for Pages Functions:*)"
     ]
   }
 }
