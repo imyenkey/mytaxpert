@@ -30,12 +30,15 @@ export default async function handler(request, env) {
     const provided = request.headers.get('X-Admin-Password');
     const stored = env.ADMIN_PASSWORD;
 
-    // Debug logging
-    console.log('Auth check:', { provided, stored, match: provided === stored });
-
-    if (!checkAuth(request, env)) {
-      return jsonResponse({ error: 'Unauthorized' }, 401);
+    // Explicit auth check
+    if (!provided || !stored) {
+      return jsonResponse({ error: 'Unauthorized - missing password' }, 401);
     }
+
+    if (provided !== stored) {
+      return jsonResponse({ error: 'Unauthorized - invalid password' }, 401);
+    }
+
     return jsonResponse({ ok: true });
   }
 
