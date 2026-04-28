@@ -23,7 +23,11 @@
       "Bash(git commit --allow-empty -m 'Trigger Cloudflare Pages redeployment with KV namespace:*)",
       "Bash(git commit -m 'Add _routes.json to enable Cloudflare Pages Functions routing:*)",
       "Bash(curl -X GET https://mytaxpert-v2.pages.dev/api/posts -H \"Content-Type: application/json\" -w \"\\\\nStatus: %{http_code}\\\\n\")",
-      "Bash(git commit -m 'Remove _routes.json - not needed for Pages Functions:*)"
+      "Bash(git commit -m 'Remove _routes.json - not needed for Pages Functions:*)",
+      "Bash(git commit --allow-empty -m 'Trigger redeploy with KV namespace binding:*)",
+      "Bash(git commit --allow-empty -m 'Trigger redeploy with ADMIN_PASSWORD environment variable:*)",
+      "Bash(git commit -m 'Add debug logging to auth check:*)",
+      "Bash(git commit -m 'Fix auth check - explicit password validation:*)"
     ]
   }
 }

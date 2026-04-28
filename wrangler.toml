@@ -3,12 +3,14 @@ compatibility_date = "2024-01-01"
 
 [env.production]
 name = "mytaxpert-production"
+vars = { ADMIN_PASSWORD = "Mytaxpert@2026" }
 kv_namespaces = [
   { binding = "BLOG_KV", id = "282abb61e17b49c48eba122c80b2294b" }
 ]
 
 [env.preview]
 name = "mytaxpert-preview"
+vars = { ADMIN_PASSWORD = "Mytaxpert@2026" }
 kv_namespaces = [
   { binding = "BLOG_KV", id = "282abb61e17b49c48eba122c80b2294b" }
 ]
