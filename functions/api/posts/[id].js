@@ -3,9 +3,10 @@
  * Handles GET (single post), PUT (update), and DELETE
  */
 
-function checkAuth(request, env) {
+function checkAuth(request) {
   const provided = request.headers.get('X-Admin-Password');
-  return provided === env.ADMIN_PASSWORD;
+  const expectedPassword = 'Mytaxpert@2026';
+  return provided === expectedPassword;
 }
 
 function jsonResponse(data, status = 200) {
@@ -30,7 +31,7 @@ async function handleGet(id, env) {
 
 async function handlePut(id, request, env) {
   // Check authentication
-  if (!checkAuth(request, env)) {
+  if (!checkAuth(request)) {
     return jsonResponse({ error: 'Unauthorized' }, 401);
   }
 
@@ -59,7 +60,7 @@ async function handlePut(id, request, env) {
 
 async function handleDelete(id, request, env) {
   // Check authentication
-  if (!checkAuth(request, env)) {
+  if (!checkAuth(request)) {
     return jsonResponse({ error: 'Unauthorized' }, 401);
   }
 

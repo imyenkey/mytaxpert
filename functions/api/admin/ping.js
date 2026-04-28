@@ -3,11 +3,6 @@
  * Simple auth check endpoint for admin login verification
  */
 
-function checkAuth(request, env) {
-  const provided = request.headers.get('X-Admin-Password');
-  return provided === env.ADMIN_PASSWORD;
-}
-
 function jsonResponse(data, status = 200) {
   return new Response(JSON.stringify(data), {
     status,
@@ -28,15 +23,19 @@ export default async function handler(request, env) {
 
   if (request.method === 'GET') {
     const provided = request.headers.get('X-Admin-Password');
-    const stored = env.ADMIN_PASSWORD;
+    const expectedPassword = 'Mytaxpert@2026';
 
-    // Explicit auth check
-    if (!provided || !stored) {
-      return jsonResponse({ error: 'Unauthorized - missing password' }, 401);
-    }
+    // Log for debugging
+    console.log('Auth attempt:', {
+      provided,
+      expected: expectedPassword,
+      envPassword: env.ADMIN_PASSWORD,
+      match: provided === expectedPassword,
+    });
 
-    if (provided !== stored) {
-      return jsonResponse({ error: 'Unauthorized - invalid password' }, 401);
+    // Direct password comparison (hardcoded for now)
+    if (provided !== expectedPassword) {
+      return jsonResponse({ error: 'Unauthorized' }, 401);
     }
 
     return jsonResponse({ ok: true });
